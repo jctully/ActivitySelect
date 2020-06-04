@@ -5,6 +5,7 @@ import java.util.*;
 
 public class Selection{
 
+    //class representing edges in a graph, used in the Graph class
     static class Edge {
         int source;
         int destination;
@@ -17,13 +18,16 @@ public class Selection{
         }
     }
 
+    //heapnode object, used by the minheap class below
     static class HeapNode{
         int vertex;
         int distance;
         int pred;
     }
 
-
+    //graph class, containing within it a method implementing Dijkstra's shortest path algorithm on the specified graph object
+    // This implementation of dijkstra's algorithm using a min heap was taken from the tutorialhorizon dijkstra's implementation at
+    // https://algorithms.tutorialhorizon.com/dijkstras-shortest-path-algorithm-spt-adjacency-list-and-min-heap-java-implementation/
     static class Graph {
         int vertices;
         LinkedList<Edge>[] adjList;
@@ -46,6 +50,7 @@ public class Selection{
         //     adjList[source].remove(edge);
         // }
 
+        //method to perform dijkstra's shortest path algorithm
         public LinkedList<Integer> dijkstra_GetMinDistances(int sourceVertex){
             int INFINITY = Integer.MAX_VALUE;
             boolean[] SPT = new boolean[vertices];
@@ -155,6 +160,9 @@ public class Selection{
         }
     }
 
+    //minHeap class is used in dijkstra's to keep track of nodes to visit
+    //This minheap implementation was also taken from the tutorialhorizon dijkstra's implementation at
+    // https://algorithms.tutorialhorizon.com/dijkstras-shortest-path-algorithm-spt-adjacency-list-and-min-heap-java-implementation/
     static class MinHeap{
         int capacity;
         int currentSize;
